@@ -7,13 +7,21 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<title></title>
+<title>
+<?php if ($title): ?>
+    <?php include $title; ?>
+<?php endif ?>
+</title>
 </head>
 <body>
-<?php //include Kohana::find_file('views', 'common/top', 'php') ?>
+<header>
+<?php if ($navbar): ?>
+    <?php include $navbar; ?>
+<?php endif ?>
+</header>
 <div id="content">
     <?php if ($content): ?>
-    <?php include $content; ?>
+        <?php include $content; ?>
     <?php endif ?>
 </div>
 

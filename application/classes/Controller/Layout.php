@@ -10,6 +10,8 @@ class Controller_Layout extends Kohana_Controller_Template
 
     public $template = 'layout/index';
 
+    public $navbar = 'layout/navbar';
+
     public function before()
     {
         parent::before();
@@ -19,15 +21,17 @@ class Controller_Layout extends Kohana_Controller_Template
         $this->template->query = $this->request->query();
         $this->template->post = $this->request->post();
         $this->template->content = strtolower($this->request->controller().'/'.$this->request->action());
+        $this->template->navbar = $this->navbar;
     }
 
     public function after()
     {
         $content = Kohana::find_file('views', $this->template->content, 'php');
-
+        $navbarContent = Kohana::find_file('views', $this->navbar, 'php');
         $this->template->title = $this->title;
         //$this->layout->messages = $this->messenger->get_messages();
         $this->template->content = $content;
+        $this->template->navbar = $navbarContent;
 
         parent::after();
     }
