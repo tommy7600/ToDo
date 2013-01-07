@@ -1,4 +1,4 @@
-INSERT INTO `kohana`.`notestatus`
+INSERT INTO `todo`.`noteStatus`
 (`id`,
 `name`,
 `description`)

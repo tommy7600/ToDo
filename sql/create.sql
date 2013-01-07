@@ -1,4 +1,4 @@
-CREATE  TABLE `kohana`.`notes` (
+CREATE  TABLE `todo`.`notes` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
   `isActive` BIT NULL DEFAULT 0,
@@ -9,14 +9,14 @@ CREATE  TABLE `kohana`.`notes` (
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
   
-  CREATE  TABLE `kohana`.`noteStatus` (
+  CREATE  TABLE `todo`.`noteStatus` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
   `description` VARCHAR(255) NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
   
-  CREATE  TABLE `kohana`.`noteContent` (
+  CREATE  TABLE `todo`.`noteContent` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `content` VARCHAR(2000) NULL ,
   `date_created` DATE NULL ,
@@ -25,16 +25,16 @@ CREATE  TABLE `kohana`.`notes` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   PRIMARY KEY (`id`) );
   
-  CREATE  TABLE `kohana`.`user_note` (
+  CREATE  TABLE `todo`.`user_note` (
   `user_id` INT NOT NULL ,
   `note_id` INT NOT NULL );
   
-  CREATE  TABLE `kohana`.`note_noteStatus` (
+  CREATE  TABLE `todo`.`note_noteStatus` (
   `note_id` INT NOT NULL ,
   `noteStatus_id` INT NOT NULL );
   
-  CREATE  TABLE `kohana`.`note_noteContent` (
+  CREATE  TABLE `todo`.`note_noteContent` (
   `note_id` INT NOT NULL ,
   `noteContent_id` INT NOT NULL );
   
-  ALTER TABLE `kohana`.`users` ADD COLUMN `isActive` BIT NULL DEFAULT 0  AFTER `last_login` ;
+  ALTER TABLE `todo`.`users` ADD COLUMN `isActive` BIT NULL DEFAULT 0  AFTER `last_login` ;
