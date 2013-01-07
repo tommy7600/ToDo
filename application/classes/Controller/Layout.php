@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
  * User: kbadura
  * Date: 1/7/13
  * Time: 10:11 AM
- * To change this layout use File | Settings | File Templates.
  */
 class Controller_Layout extends Kohana_Controller_Template
 {
