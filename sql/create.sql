@@ -34,3 +34,5 @@ CREATE  TABLE `kohana`.`notes` (
   
   ALTER TABLE `kohana`.`users` ADD COLUMN `isActive` BIT NULL DEFAULT 0  AFTER `last_login` ;
   ALTER TABLE `kohana`.`notes` ADD COLUMN `isActive` BIT NULL DEFAULT 0  AFTER `date_ended` ;
+  
+  ALTER TABLE `kohana`.`notes` ADD COLUMN `parent_id` INT NULL  AFTER `isActive` , ADD COLUMN `left_id` INT NULL  AFTER `parent_id` , ADD COLUMN `right_id` INT NULL  AFTER `left_id` , ADD COLUMN `depth` INT NULL  AFTER `right_id` ;
