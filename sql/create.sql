@@ -1,9 +1,6 @@
 CREATE  TABLE `kohana`.`notes` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
-  `date_created` DATE NULL ,
-  `date_planned_ended` DATE NULL ,
-  `date_ended` DATE NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
   
@@ -17,6 +14,9 @@ CREATE  TABLE `kohana`.`notes` (
   CREATE  TABLE `kohana`.`noteContent` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `content` VARCHAR(2000) NULL ,
+  `date_created` DATE NULL ,
+  `date_planned_ended` DATE NULL ,
+  `date_ended` DATE NULL ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   PRIMARY KEY (`id`) );
   
