@@ -22,8 +22,5 @@
             <?php include $content; ?>
         <?php endif ?>
     </div>
-
-    <?php //include Kohana::find_file('views', 'profiler/stats', 'php') ?>
-    <?php //include Kohana::find_file('views', 'common/bottom', 'php') ?>
     </body>
 </html>

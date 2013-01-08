@@ -1,1 +1,1 @@
-adminnavbar
+Navbar admin
