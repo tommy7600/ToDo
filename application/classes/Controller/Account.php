@@ -10,8 +10,10 @@ class Controller_Account extends Controller_Layout
         parent::__construct($request,$response);
     }
 
-	public function action_index()
-	{
+    public function before()
+    {
+        parent::before();
+
         if(Auth::instance()->logged_in())
         {
             if(Auth::instance()->logged_in("admin"))
@@ -20,13 +22,16 @@ class Controller_Account extends Controller_Layout
             }
             HTTP::redirect("note");
         }
+    }
 
+	public function action_index()
+	{
         $post = $this->request->post();
         if(isset($post["username"], $post["password"]))
         {
             if (Auth::instance()->login($post['username'], $post['password']))
             {
-                HTTP::redirect('admin');
+                HTTP::redirect("");
             }
             else
             {
@@ -35,18 +40,9 @@ class Controller_Account extends Controller_Layout
         }
 	}
 
-    public function action_logout()
-    {
-        Auth::instance()->logout();
-        HTTP::redirect();
-    }
-
     public function action_registration()
     {
-        $post = $this->request->post();
-        if(isset($post["username"], $post["password"]))
-        {
-        }
+        $this->_save(ORM::factory("user"));
     }
 
     public function action_forgottenPassword()
@@ -54,4 +50,45 @@ class Controller_Account extends Controller_Layout
 
     }
 
+    public function action_resetPassword()
+    {
+
+    }
+
+    private function _save($user)
+    {
+        $post = $this->request->post();
+
+        if(isset($post["username"]))
+        {
+            try
+            {
+                $extraValid = Validation::factory($post);
+
+                $user->username = $post["username"];
+                $extraValid->rule('username', "not_empty");
+
+                $user->email = $post["email"];
+                $extraValid->rule('email', "not_empty");
+                $extraValid->rule('email', "email");
+
+                if (isset($post["password"]) && !empty($post["password"]))
+                {
+                    $user->password = $post["password"];
+                    $extraValid->rule("password", "min_length", array(':value','6'));
+                }
+
+                $user->save($extraValid);
+
+                $user->remove("roles");
+                $user->add("roles", 1);
+
+                HTTP::redirect();
+            }
+            catch (ORM_Validation_Exception $e)
+            {
+                $this->template->errors =  $e->errors('');
+            }
+        }
+    }
 } // End Welcome

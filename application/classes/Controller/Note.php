@@ -8,6 +8,27 @@
  */
 class Controller_Note extends Controller_Layout
 {
+    public function __construct(Request $request, Response $response)
+    {
+        $this->title = "ToDo - Note";
+
+        parent::__construct($request,$response);
+    }
+
+    public function before()
+    {
+        parent::before();
+
+        if(!Auth::instance()->logged_in())
+        {
+            HTTP::redirect("account");
+        }
+        if(Auth::instance()->logged_in("admin"))
+        {
+            HTTP::redirect("admin");
+        }
+    }
+
     public function action_index()
     {
 
