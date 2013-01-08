@@ -4,8 +4,8 @@ return array(
 		'driver' => 'smtp',
 		'options' => array(
 			'hostname'=>'smtp.gmail.com',
-			'username'=>'user',
-			'password'=>'pass',
+			'username'=>'kamilsmtptest@gmail.com',
+			'password'=>'123edcxzaqws',
 			'port'=>'465',
             'encryption' => 'ssl',
 		),
