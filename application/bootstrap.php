@@ -92,6 +92,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'   => '/',
+    'index_file' => '',
 ));
 
 /**
@@ -118,6 +119,7 @@ Kohana::modules(array(
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
     'mptt'       => MODPATH.'mptt', // Modified Preorder Tree Traversal module based on Nested Sets algorithm
+    'sender'      => MODPATH.'sender',      // Swiftmailer sender
 	));
 
 /**
