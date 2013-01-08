@@ -62,6 +62,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * Set the default language
  */
 I18n::lang('pl-pl');
+Cookie::$salt = 'HLhIT87778HJILFdf56Tdsdsdrfarew33dfJ878tghk';
 
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
