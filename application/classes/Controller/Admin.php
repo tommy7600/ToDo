@@ -18,6 +18,16 @@ class Controller_Admin extends Controller_Layout
         parent::__construct($request,$response);
     }
 
+    public function before()
+    {
+        parent::before();
+
+        if(!Auth::instance()->logged_in("admin"))
+        {
+            HTTP::redirect("account");
+        }
+    }
+
     public function action_index()
     {
 
