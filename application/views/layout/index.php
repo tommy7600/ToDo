@@ -8,6 +8,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+    <base href="<?php echo URL::base()?>">
     <meta charset="utf-8">
     <title><?php echo $title ?></title>
 
