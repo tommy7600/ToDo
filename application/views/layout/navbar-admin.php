@@ -32,7 +32,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
                         <ul class="dropdown-menu top_menu">
                             <li><a class="mn_profile" href="#"><span>My Profile</span></a></li>
-                            <li><a class="mn_logout" href="login.html"><span>Logout</span></a></li>
+                            <li><a class="mn_logout" href="admin/logout"><span>Logout</span></a></li>
                         </ul>
                     </li>
                 </ul>

@@ -3,18 +3,22 @@
     <form class="formClass" method="post" action="">
         <fieldset>
             <label class="email_cont" for="email"><span>Email</span></label>
-            <input id="email" name="email" class="validate[custom[email]] text-input" placeholder="email" type="text"
-                   tabindex="1" accesskey="e">
+            <input id="email" name="email" class="validate[custom[email]] text-input" placeholder="email" type="text">
         </fieldset>
         <fieldset>
             <label for="username"><span>Username</span></label>
             <input id="username" name="username" class="validate[required] text-input" placeholder="username"
-                   type="text" tabindex="2" accesskey="u">
+                   type="text">
         </fieldset>
         <fieldset>
             <label class="pw_cont" for="password"><span>Password</span></label>
-            <input id="password" name="password" class="validate[required] text-input" placeholder="password"
-                   type="password" tabindex="3" accesskey="p">
+            <input id="password" name="password" class="validate[required,minSize[6]] text-input" placeholder="password"
+                   type="password">
+        </fieldset>
+        <fieldset>
+            <label class="pw_cont" for="password_conf"><span>Confirm password</span></label>
+            <input id="password_conf" name="password_conf" class="validate[required,equals[password],minSize[6]] text-input"
+                   placeholder="confirm password" type="password" tabindex="2">
         </fieldset>
         <fieldset class="login_submit">
             <button type="submit" class="btn">SIGN UP</button>
