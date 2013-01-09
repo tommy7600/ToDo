@@ -380,7 +380,7 @@ abstract class Kohana_Model_MPTT extends ORM
 		$this->_db->query(Database::UPDATE, 'UPDATE '.$this->_table_name.' SET `'.$this->left_column.'` = `'.$this->left_column.'` - '.$size.' WHERE `'.$this->left_column.'` >= '.$start.' AND `'.$this->scope_column.'` = '.$this->{$this->scope_column}, FALSE);
 		$this->_db->query(Database::UPDATE, 'UPDATE '.$this->_table_name.' SET `'.$this->right_column.'` = `'.$this->right_column.'` - '.$size.' WHERE `'.$this->right_column.'` >= '.$start.' AND `'.$this->scope_column.'` = '.$this->{$this->scope_column}, FALSE);
 	}
-	
+
 	/**
 	 * Insert a node
 	 *
@@ -424,7 +424,7 @@ abstract class Kohana_Model_MPTT extends ORM
 
 		return $this;
 	}
-	
+
 	/**
 	 * Inserts a new node to the left of the target node.
 	 *
@@ -479,7 +479,7 @@ abstract class Kohana_Model_MPTT extends ORM
 	 * @access public
 	 * @return ORM_MPTT|bool
 	 */
-	public function save()
+	public function save(Validation $validation = NULL)
 	{
 		if ($this->loaded() === TRUE)
 			return parent::save();
