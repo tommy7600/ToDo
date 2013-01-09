@@ -4,6 +4,7 @@ class Controller_Admin extends Controller_Layout
 {
 
     public $navbar = "layout/navbar-admin";
+    public $template = "layout/index-admin";
     protected $title = "Admin";
 
     public function before()

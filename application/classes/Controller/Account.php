@@ -4,7 +4,7 @@ class Controller_Account extends Controller_Layout
 {
 
     public $template = "layout/account";
-    public $title = "ToDo";
+    protected $title = "ToDo";
 
     public function before()
     {

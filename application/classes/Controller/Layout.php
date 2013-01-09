@@ -3,9 +3,7 @@
 class Controller_Layout extends Kohana_Controller_Template
 {
     protected $title = '';
-
     public $template = 'layout/index';
-
     public $navbar = 'layout/navbar';
 
     public function before()
