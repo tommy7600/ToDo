@@ -38,27 +38,28 @@ class Controller_Account extends Controller_Layout
         {
             if (Auth::instance()->login($post['username'], $post['password']))
             {
-                HTTP::redirect();
+                if(Auth::instance()->get_user()->isActive)
+                {
+                    HTTP::redirect();
+                }
+                else
+                {
+                    Auth::instance()->logout();
+                }
             }
             else
             {
-                $this->template->error = __('Podane dane są nieprawidłowe.');
+                $this->template->messages["error"] = array("Login" => "Login data are incorrect.");
             }
         }
 	}
 
     public function action_registration()
     {
-        $this->_save(ORM::factory("user"));
-    }
-
-    public function action_forgottenPassword()
-    {
-        $post= $this->request->post();
-        if(isset($post["email"]))
+        $user = $this->_registerUser(ORM::factory("user"));
+        if($user)
         {
-            $user = ORM::factory("user")->where("email","LIKE",$post["email"])->find();
-            if(isset($user) && $user !== NULL)
+            try
             {
                 $mailer = Kohana_Sender::connect();
 
@@ -69,15 +70,80 @@ class Controller_Account extends Controller_Layout
                 $token->save();
 
                 $message = Swift_Message::newInstance()
-                    ->setSubject('Forgotten Password ToDo')
+                    ->setSubject('Forgotten Password - ToDo')
                     ->setFrom(array('kamilsmtptest@gmail.com' => 'ToDo'))
                     ->setTo(array($user->email => $user->username))
                 //todo: add dynamic content to mailBody
-                    ->setBody('ResetPassword http://todo.localhost/account/resetpassword/'.$token->token, 'text/html');
+                    ->setBody('Register User http://todo.localhost/account/confirm/' . $token->token, 'text/html');
 
                 $mailer->send($message);
 
-                //TODO: add message to site
+                $this->template->messages["success"] = array("Registration " => "Email has been sent");
+            }
+            catch (Exception $e)
+            {
+                $this->template->messages["error"] = array("Registration" => "Can't sent email. Contact Admin");
+            }
+        }
+        else
+            $this->template->messages["error"] = array("Registration" => "Can't register account. Contact Admin");
+    }
+
+    public function action_confirm()
+    {
+        $tokenId = $this->request->param("id");
+        $token = Model_User_Token::factory('user_token')->where("token","=", $tokenId)->find();
+        if($token->loaded())
+        {
+            if($this->_activateUser(ORM::factory("user", $token->user_id)))
+            {
+                $token->delete();
+                $this->template->messages["success"] = array("Activate User" => "Password has been reset");
+            }
+            else
+            {
+                $this->template->messages["error"] = array("Activate User" => "Can't change password");
+            }
+        }
+        else
+        {
+            $this->template->messages["error"] = array("Activate User" => "Can't activate user. Token not exists or has expired");
+        }
+    }
+
+    public function action_forgottenPassword()
+    {
+        $post= $this->request->post();
+        if(isset($post["email"]))
+        {
+            $user = ORM::factory("user")->where("email","LIKE",$post["email"])->find();
+            if($user->loaded())
+            {
+                try
+                {
+                    $mailer = Kohana_Sender::connect();
+
+                    $token = ORM::factory('user_token');
+                    // Set token data
+                    $token->user_id = $user->id;
+                    $token->expires = time() + 100000;
+                    $token->save();
+
+                    $message = Swift_Message::newInstance()
+                        ->setSubject('Forgotten Password - ToDo')
+                        ->setFrom(array('kamilsmtptest@gmail.com' => 'ToDo'))
+                        ->setTo(array($user->email => $user->username))
+                    //todo: add dynamic content to mailBody
+                        ->setBody('ResetPassword http://todo.localhost/account/resetpassword/' . $token->token, 'text/html');
+
+                    $mailer->send($message);
+
+                    $this->template->messages["success"] = array("Forgotten Password" => "Email has been sent");
+                }
+                catch (Exception $e)
+                {
+                    $this->template->messages["error"] = array("Forgotten Password" => "Can't sent email. Contact Admin");
+                }
             }
         }
     }
@@ -91,7 +157,16 @@ class Controller_Account extends Controller_Layout
             if($this->_changePassword(ORM::factory("user", $token->user_id)))
             {
                 $token->delete();
-            };
+                $this->template->messages["success"] = array("Reset Password" => "Password has been reset");
+            }
+            else
+            {
+                $this->template->messages["error"] = array("Reset Password" => "Can't change password");
+            }
+        }
+        else
+        {
+            $this->template->messages["error"] = array("Reset Password" => "Can't change password. Token not exists or has expired");
         }
     }
 
@@ -100,19 +175,33 @@ class Controller_Account extends Controller_Layout
         $post = $this->request->post();
         if (isset($post["password"]) && !empty($post["password"]))
         {
-            $extraValid = Validation::factory($post);
-            $user->password = $post["password"];
-            $extraValid->rule("password", "min_length", array(':value','6'));
-            $user->save($extraValid);
+            try
+            {
+                $extraValid = Validation::factory($post);
+                $user->password = $post["password"];
+                $extraValid->rule("password", "min_length", array(':value', '6'));
+                $user->save($extraValid);
+            }
+            catch (ORM_Validation_Exception $e)
+            {
+                $this->template->errors =  $e->errors('');
+            }
             return TRUE;
         }
         return FALSE;
     }
 
+    private function _activateUser($user)
+    {
+        $user->isActive = 1;
+        $user->save();
+        return TRUE;
+    }
+
     /**
      * @param $user user Auth Entity
      */
-    private function _save($user)
+    private function _registerUser($user)
     {
         $post = $this->request->post();
 
@@ -148,13 +237,13 @@ class Controller_Account extends Controller_Layout
                     $user->add("roles", $post["role"]);
                 else
                     $user->add("roles", 1);
-
-                HTTP::redirect();
+                return $user;
             }
             catch (ORM_Validation_Exception $e)
             {
                 $this->template->errors =  $e->errors('');
             }
         }
+        return FALSE;
     }
 }

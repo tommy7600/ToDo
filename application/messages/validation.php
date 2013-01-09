@@ -24,4 +24,5 @@ return array(
     'range' => ':field must be within the range of :param2 to :param3',
     'regex' => ':field does not match the required format',
     'url' => ':field must be a url',
+    'unique' => ':param1: ":param2" already exists'
 );

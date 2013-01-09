@@ -2,16 +2,20 @@
 <div class="login_form">
     <form class="formClass" method="post" action="">
         <fieldset>
+
             <label class="email_cont" for="email"><span>Email</span></label>
             <input id="email" name="email" class="validate[custom[email]] text-input" placeholder="email" type="text" tabindex="1" accesskey="e">
+            <p class="help-block"><?php echo HTML::errorLabel($errors, "email")?></p>
         </fieldset>
         <fieldset>
             <label for="username"><span>Username</span></label>
             <input id="username" name="username" class="validate[required] text-input" placeholder="username" type="text" tabindex="2" accesskey="u">
+            <p class="help-block"><?php echo HTML::errorLabel($errors, "username")?></p>
         </fieldset>
         <fieldset>
             <label class="pw_cont" for="password"><span>Password</span></label>
             <input id="password" name="password" class="validate[required] text-input" placeholder="password" type="password" tabindex="3" accesskey="p">
+            <p class="help-block"><?php echo HTML::errorLabel($errors, "password")?></p>
         </fieldset>
         <fieldset class="login_submit"><button type="submit" class="btn">SIGN UP</button></fieldset>
         <fieldset class="login_social">

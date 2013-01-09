@@ -5,9 +5,33 @@ class HTML extends Kohana_HTML
     public static function errorLabel(array $errors, $key)
     {
         if(isset($errors[$key]))
-            return '<div class="control-group error"><label class="control-label" for="'.$key.'">'.$errors[$key].'</label></div>';
+            return '<span class="label label-important">'.$errors[$key].'</span>';
         if(isset($errors["_external"][$key]))
-            return '<div class="control-group error"><label class="control-label" for="'.$key.'">'.$errors["_external"][$key].'</label></div>';
+            return '<span class="label label-important">'.$errors["_external"][$key].'</span>';
         return '';
+    }
+
+    public static function alerts(array $messages)
+    {
+        $divLabels="";
+        if (isset($messages["success"]) && !empty($messages["success"]))
+        {
+            foreach ($messages["success"] as $key => $val) {
+                $divLabels .= "<div class='alert alert-success'>
+                                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                              <strong>" . $key . " Success!</strong> " . $val . "
+                            </div>";
+            }
+        }
+        if (isset($messages["error"]) && !empty($messages["error"]))
+        {
+            foreach ($messages["error"] as $key => $val) {
+                $divLabels .= "<div class='alert alert-error'>
+                                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                              <strong>" . $key . " Error!</strong> " . $val . "
+                            </div>";
+            }
+        }
+        return $divLabels;
     }
 }

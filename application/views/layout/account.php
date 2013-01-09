@@ -38,6 +38,10 @@
 </head>
 <body>
 
+<div>
+    <?php echo HTML::alerts($messages)?>
+</div>
+
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
