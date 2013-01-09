@@ -8,29 +8,38 @@
  */
 class Controller_Note extends Controller_Layout
 {
-    public function __construct(Request $request, Response $response)
-    {
-        $this->title = "ToDo - Note";
-
-        parent::__construct($request,$response);
-    }
+    protected $title = "ToDo - Note";
 
     public function before()
     {
         parent::before();
 
-        if(!Auth::instance()->logged_in())
-        {
+        if (!Auth::instance()->logged_in()) {
             HTTP::redirect("account");
         }
-        if(Auth::instance()->logged_in("admin"))
-        {
+        if (Auth::instance()->logged_in("admin")) {
             HTTP::redirect("admin");
         }
     }
 
     public function action_index()
     {
+        try {
+            $userID = 1;
+            $notes = ORM::factory('user', $userID)
+                ->notes
 
+                ->find_all();
+            $this->template->notes = $notes;
+
+
+            $sampleNodeContent = ORM::factory('note', 1)->contents->find_all();
+            var_dump($sampleNodeContent);
+            $this->template->sample = $sampleNodeContent[0];
+        }
+        catch (ORM_Validation_Exception $e)
+        {
+            $this->template->errors =  $e->errors('');
+        }
     }
 }
