@@ -17,6 +17,11 @@ class Controller_Admin extends Controller_Layout
 
     public function action_index()
     {
+
+    }
+
+    public function action_userslist()
+    {
         //var_dump(Auth::instance()->get_user()->id);
         //exit;
         $this->template->users = ORM::factory("user")->find_all();
@@ -61,7 +66,7 @@ class Controller_Admin extends Controller_Layout
                 $item->remove("roles");
                 $item->add("roles", $post["role"]);
 
-                HTTP::redirect("admin");
+                HTTP::redirect("admin/userslist");
             } catch (ORM_Validation_Exception $e) {
                 var_dump($e->errors());
             }

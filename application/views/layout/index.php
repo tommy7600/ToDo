@@ -65,7 +65,7 @@
                 </h3>
                 <ul class="nav nav-list">
                     <li class="active"><a class="home" href="admin/">Dashboard</a></li>
-                    <li><a class="users" href="#">Users list</a></li>
+                    <li><a class="users" href="admin/userslist">Users list</a></li>
                 </ul>
             </div>
             <!--/.well -->
@@ -74,15 +74,6 @@
         <div class="span9">
             <div class="row-fluid">
                 <div class="span12">
-
-                    <ul class="breadcrumb br_styled no_space">
-                        <li class="active">Dashboard</li>
-                    </ul>
-                    <ul class="page_info">
-                        <li><h2>Dashboard</h2></li>
-                        <li>Welcome administrator :D</li>
-                    </ul>
-
                     <?php if ($content): ?>
                         <?php include $content; ?>
                     <?php endif ?>
