@@ -1,30 +1,17 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-/**
- *
- */
 class Controller_Account extends Controller_Layout
 {
-    /**
-     * @param Request $request
-     * @param Response $response
-     */
-    public function __construct(Request $request, Response $response)
-    {
-        $this->template="layout/account";
-        $this->title = "ToDo";
 
-        parent::__construct($request,$response);
-    }
+    public $template = "layout/account";
+    public $title = "ToDo";
 
     public function before()
     {
         parent::before();
 
-        if(Auth::instance()->logged_in())
-        {
-            if(Auth::instance()->logged_in("admin"))
-            {
+        if (Auth::instance()->logged_in()) {
+            if (Auth::instance()->logged_in("admin")) {
                 HTTP::redirect("admin");
             }
             HTTP::redirect("note");
@@ -32,20 +19,17 @@ class Controller_Account extends Controller_Layout
     }
 
     public function action_index()
-	{
+    {
         $post = $this->request->post();
-        if(isset($post["username"], $post["password"]))
-        {
-            if (Auth::instance()->login($post['username'], $post['password']))
-            {
+        $remember_me = isset($post['remember']) ? TRUE : FALSE;
+        if (isset($post["username"], $post["password"])) {
+            if (Auth::instance()->login($post['username'], $post['password'], $remember_me)) {
                 HTTP::redirect();
-            }
-            else
-            {
+            } else {
                 $this->template->error = __('Podane dane są nieprawidłowe.');
             }
         }
-	}
+    }
 
     public function action_registration()
     {
@@ -54,12 +38,10 @@ class Controller_Account extends Controller_Layout
 
     public function action_forgottenPassword()
     {
-        $post= $this->request->post();
-        if(isset($post["email"]))
-        {
-            $user = ORM::factory("user")->where("email","LIKE",$post["email"])->find();
-            if(isset($user) && $user !== NULL)
-            {
+        $post = $this->request->post();
+        if (isset($post["email"])) {
+            $user = ORM::factory("user")->where("email", "LIKE", $post["email"])->find();
+            if (isset($user) && $user !== NULL) {
                 $mailer = Kohana_Sender::connect();
 
                 $token = ORM::factory('user_token');
@@ -72,8 +54,8 @@ class Controller_Account extends Controller_Layout
                     ->setSubject('Forgotten Password ToDo')
                     ->setFrom(array('kamilsmtptest@gmail.com' => 'ToDo'))
                     ->setTo(array($user->email => $user->username))
-                //todo: add dynamic content to mailBody
-                    ->setBody('ResetPassword http://todo.localhost/account/resetpassword/'.$token->token, 'text/html');
+                    //todo: add dynamic content to mailBody
+                    ->setBody('ResetPassword http://todo.localhost/account/resetpassword/' . $token->token, 'text/html');
 
                 $mailer->send($message);
 
@@ -85,24 +67,22 @@ class Controller_Account extends Controller_Layout
     public function action_resetPassword()
     {
         $tokenId = $this->request->param("id");
-        $token = Model_User_Token::factory('user_token')->where("token","=", $tokenId)->find();
-        if($token->loaded())
-        {
-            if($this->_changePassword(ORM::factory("user", $token->user_id)))
-            {
+        $token = Model_User_Token::factory('user_token')->where("token", "=", $tokenId)->find();
+        if ($token->loaded()) {
+            if ($this->_changePassword(ORM::factory("user", $token->user_id))) {
                 $token->delete();
-            };
+            }
+            ;
         }
     }
 
     public function _changePassword($user)
     {
         $post = $this->request->post();
-        if (isset($post["password"]) && !empty($post["password"]))
-        {
+        if (isset($post["password"]) && !empty($post["password"])) {
             $extraValid = Validation::factory($post);
             $user->password = $post["password"];
-            $extraValid->rule("password", "min_length", array(':value','6'));
+            $extraValid->rule("password", "min_length", array(':value', '6'));
             $user->save($extraValid);
             return TRUE;
         }
@@ -116,44 +96,37 @@ class Controller_Account extends Controller_Layout
     {
         $post = $this->request->post();
 
-        if(isset($post["username"]))
-        {
-            try
-            {
+        if (isset($post["username"])) {
+            try {
                 $extraValid = Validation::factory($post);
 
-                if (isset($post["username"]))
-                {
+                if (isset($post["username"])) {
                     $user->username = $post["username"];
                     $extraValid->rule('username', "not_empty");
                 }
 
-                if (isset($post["email"]))
-                {
+                if (isset($post["email"])) {
                     $user->email = $post["email"];
                     $extraValid->rule('email', "not_empty");
                     $extraValid->rule('email', "email");
                 }
 
-                if (isset($post["password"]) && !empty($post["password"]))
-                {
+                if (isset($post["password"]) && !empty($post["password"])) {
                     $user->password = $post["password"];
-                    $extraValid->rule("password", "min_length", array(':value','6'));
+                    $extraValid->rule("password", "min_length", array(':value', '6'));
                 }
 
                 $user->save($extraValid);
 
                 $user->remove("roles");
-                if(isset($post["role"]))
+                if (isset($post["role"]))
                     $user->add("roles", $post["role"]);
                 else
                     $user->add("roles", 1);
 
                 HTTP::redirect();
-            }
-            catch (ORM_Validation_Exception $e)
-            {
-                $this->template->errors =  $e->errors('');
+            } catch (ORM_Validation_Exception $e) {
+                $this->template->errors = $e->errors('');
             }
         }
     }

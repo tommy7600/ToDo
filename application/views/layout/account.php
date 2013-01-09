@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <base href="<?php echo URL::base()?>">
     <meta charset="utf-8">
     <title><?php echo $title ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- ===================== Touch Icons ===================== -->
-    <link rel="assets/ico/shortcut icon" href="favicon.ico">
-    <link rel="assets/ico/apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
-    <link rel="assets/ico/apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
-    <link rel="assets/ico/apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
-    <link rel="assets/ico/apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">
+    <link rel="assets/ico/shortcut icon" href="ico/favicon.ico">
+    <link rel="assets/ico/apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="assets/ico/apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="assets/ico/apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="assets/ico/apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
     <!-- ===================== CSS ===================== -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -48,9 +52,9 @@
 
 <div class="login_main_cont">
     <div class="login_cont group login">
-            <?php if ($content): ?>
-                <?php include $content; ?>
-            <?php endif ?>
+        <?php if ($content): ?>
+            <?php include $content; ?>
+        <?php endif ?>
     </div>
 </div>
 
@@ -69,8 +73,6 @@
 
 </body>
 </html>
-
-
 
 
 <!--<!DOCTYPE html>-->

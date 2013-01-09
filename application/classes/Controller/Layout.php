@@ -1,9 +1,5 @@
-<?php
-/**
- * User: kbadura
- * Date: 1/7/13
- * Time: 10:11 AM
- */
+<?php defined('SYSPATH') or die('No direct script access.');
+
 class Controller_Layout extends Kohana_Controller_Template
 {
     protected $title = '';
@@ -20,7 +16,7 @@ class Controller_Layout extends Kohana_Controller_Template
         $this->template->errors = array();
         $this->template->query = $this->request->query();
         $this->template->post = $this->request->post();
-        $this->template->content = strtolower($this->request->controller().'/'.$this->request->action());
+        $this->template->content = strtolower($this->request->controller() . '/' . $this->request->action());
         $this->template->navbar = $this->navbar;
     }
 

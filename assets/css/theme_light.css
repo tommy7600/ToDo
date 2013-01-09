@@ -2226,6 +2226,11 @@ div.jGrowl div.notification_styled_info div.jGrowl-header, div.jGrowl div.notifi
 .login_cont .login_social ul { position: relative; }
 .login_cont .login_social li { float: left; }
 .login_cont .login_social .info { background-color: #202022; border-bottom: 1px solid #444444; color: #fff; display: none; padding: 5px 20px; position: absolute; text-align: center; top: 14px; width: 95px; }
+.login_cont .login_social .login_s span { background-position: 0 -120px; }
+.login_cont .login_social .login_s:hover span, .login_cont .login_switcher .login_s.akt span { background-position: 0 -180px; }
+.login_cont .login_social .login_f span { background-position: 0 -240px; }
+.login_cont .login_social .login_f:hover span, .login_cont .login_switcher .login_f.akt span { background-position: 0 -300px; }
+
 .login_cont .left { float: left; padding: 18px 0 0 25px; }
 .login_cont .left .info { left: 70px; }
 .login_cont .left .info:before { left: -6px; top: 30%; border-bottom: 6px solid transparent; border-right: 6px solid #202022; border-top: 6px solid transparent; content: ""; display: inline-block; position: absolute; }

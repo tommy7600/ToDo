@@ -1,22 +1,10 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: kbadura
- * Date: 1/7/13
- * Time: 2:18 PM
- * To change this template use File | Settings | File Templates.
- */
+<?php defined('SYSPATH') or die('No direct script access.');
+
 class Controller_Admin extends Controller_Layout
 {
 
-
-    public function __construct(Request $request, Response $response)
-    {
-        $this->navbar = "layout/navbar-admin";
-        $this->title = "Admin";
-
-        parent::__construct($request, $response);
-    }
+    public $navbar = "layout/navbar-admin";
+    protected $title = "Admin";
 
     public function before()
     {
@@ -29,6 +17,8 @@ class Controller_Admin extends Controller_Layout
 
     public function action_index()
     {
+        //var_dump(Auth::instance()->get_user()->id);
+        //exit;
         $this->template->users = ORM::factory("user")->find_all();
     }
 
@@ -46,7 +36,12 @@ class Controller_Admin extends Controller_Layout
 
     public function action_delete()
     {
+        $user = ORM::factory('user')
+            ->where('id', '=', $this->request->param('id'))
+            ->find()
+            ->delete();
 
+        HTTP::redirect('admin');
     }
 
     private function _save($item)
