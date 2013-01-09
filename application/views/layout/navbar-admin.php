@@ -14,8 +14,8 @@
                         <a href="#">Search</a>
 
                         <div class="search_cont">
-                            <form class="navbar-search form-search">
-                                <input type="text" class="input-medium search-query" placeholder="Search">
+                            <form class="navbar-search form-search" action="admin/userslist" method="get">
+                                <input type="text" class="input-medium search-query" name="keyword"  placeholder="Search">
                                 <button type="submit">Search</button>
                             </form>
                         </div>

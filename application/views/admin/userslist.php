@@ -3,6 +3,7 @@
         <h3>Users List</h3>
     </header>
     <section class="group">
+        <div class="dataTables_filter" id="dataTables_filter"><form class="form" action="" method="get"><label>Search: <input type="text" name="keyword"></form></label></div>
         <table id="example" class="display">
             <thead>
             <tr>
