@@ -25,7 +25,7 @@ class Controller_Admin extends Controller_Layout
     {
         //var_dump(Auth::instance()->get_user()->id);
         //exit;
-        $keyword = htmlentities(trim($this->request->query("keyword")));
+        $keyword = htmlspecialchars(trim($this->request->query("keyword")));
 
         if (isset($keyword) && !empty($keyword))
             $this->template->users = ORM::factory("user")->or_where('username', "LIKE", "%" . $keyword . "%")->or_where("email", "LIKE", "%" . $keyword . "%")->find_all();
