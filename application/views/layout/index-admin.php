@@ -124,7 +124,12 @@
 
 <script src="assets/js/script.js"></script>
 <script src="assets/js/specific/sparks.js"></script>
-<script src="assets/js/specific/index.js"></script>
+<!--<script src="assets/js/specific/index.js"></script>-->
+
+<script src="assets/js/plugins/tables/jquery.dataTables.min.js"></script>
+<script src="assets/js/plugins/tables/colResizable-1.3.min.js"></script>
+<script src="assets/js/plugins/tables/jquery.tablesorter.min.js"></script>
+<script src="assets/js/specific/tables_advanced.js"></script>
 
 </body>
 </html>
