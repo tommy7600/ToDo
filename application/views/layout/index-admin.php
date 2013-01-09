@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="assets/css/theme_light/formselements/chosen.css">
     <link rel="stylesheet" href="assets/css/theme_light/formselements/dropkick.css">
     <link rel="stylesheet" href="assets/css/theme_light/jquery-ui-1.8.20.custom.css">
+    <link rel="stylesheet" href="assets/css/theme_light/filevalidation/validationEngine.jquery.css">
 
     <!-- Common - CSS -->
     <link rel="stylesheet" href="assets/css/theme_light/common.css">
@@ -101,6 +102,8 @@
 <script src="assets/js/libs/ios-orientationchange-fix.js"></script>
 <script src="assets/js/libs/jquery-ui-1.8.20.custom.min.js"></script>
 <script src="assets/js/plugins/widgets/jquery.sparkline.min.js"></script>
+<script src="assets/js/plugins/filevalidation/languages/jquery.validationEngine-en.js"></script>
+<script src="assets/js/plugins/filevalidation/jquery.validationEngine.js"></script>
 <script src="assets/js/common.js"></script>
 
 <!-- Site specific -->
