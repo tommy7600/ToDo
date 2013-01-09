@@ -20,6 +20,22 @@ class Controller_Note extends Controller_Layout
 
     public function action_index()
     {
+        try {
+            $userID = 1;
+            $notes = ORM::factory('user', $userID)
+                ->notes
 
+                ->find_all();
+            $this->template->notes = $notes;
+
+
+            $sampleNodeContent = ORM::factory('note', 1)->contents->find_all();
+            var_dump($sampleNodeContent);
+            $this->template->sample = $sampleNodeContent[0];
+        }
+        catch (ORM_Validation_Exception $e)
+        {
+            $this->template->errors =  $e->errors('');
+        }
     }
 }
