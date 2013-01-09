@@ -21,8 +21,9 @@ class Controller_Account extends Controller_Layout
     public function action_index()
     {
         $post = $this->request->post();
+        $remember_me = isset($post['remember']) ? TRUE : FALSE;
         if (isset($post["username"], $post["password"])) {
-            if (Auth::instance()->login($post['username'], $post['password'])) {
+            if (Auth::instance()->login($post['username'], $post['password'], $remember_me)) {
                 HTTP::redirect();
             } else {
                 $this->template->error = __('Podane dane są nieprawidłowe.');

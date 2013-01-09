@@ -10,10 +10,6 @@
             <button type="submit" class="btn">RECOVER PASSWORD</button>
         </fieldset>
         <fieldset class="login_social">
-            <ul class="left">
-                <li><input type="checkbox" class="remember" name="remember" value="1" tabindex="3"></li>
-                <li class="info"><span>REMEMBER ME</span></li>
-            </ul>
             <ul class="right">
                 <li class="info"><span>SIGN UP</span></li>
                 <li><a class="login_s" href="account/registration"><span>Sign up</span></a></li>
