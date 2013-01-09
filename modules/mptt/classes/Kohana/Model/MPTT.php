@@ -479,7 +479,7 @@ abstract class Kohana_Model_MPTT extends ORM
 	 * @access public
 	 * @return ORM_MPTT|bool
 	 */
-	public function save(Validation $validation = NULL)
+	public function save()
 	{
 		if ($this->loaded() === TRUE)
 			return parent::save();

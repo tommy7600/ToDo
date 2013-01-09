@@ -11,5 +11,7 @@ note
 
 <br><br><br>
 <?php
-    echo $sample->content;
+    //echo $sample->content;
 ?>
+
+<a href="/note/add" class="btn">Add Note</a>
