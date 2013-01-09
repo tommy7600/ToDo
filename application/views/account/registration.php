@@ -2,7 +2,6 @@
 <div class="login_form">
     <form class="formClass" method="post" action="">
         <fieldset>
-
             <label class="email_cont" for="email"><span>Email</span></label>
             <input id="email" name="email" class="validate[custom[email]] text-input" placeholder="email" type="text" tabindex="1" accesskey="e">
             <p class="help-block"><?php echo HTML::errorLabel($errors, "email")?></p>

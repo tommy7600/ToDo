@@ -1,36 +1,82 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-/**
- * Created by JetBrains PhpStorm.
- * User: kbadura
- * Date: 1/7/13
- * Time: 11:26 AM
- * To change this template use File | Settings | File Templates.
- */
+
 class Controller_Note extends Controller_Layout
 {
-    public function __construct(Request $request, Response $response)
-    {
-        $this->title = "ToDo - Note";
 
-        parent::__construct($request,$response);
-    }
+    protected $title = "ToDo - Note";
+    public $template = "layout/index-admin";
 
     public function before()
     {
         parent::before();
 
-        if(!Auth::instance()->logged_in())
-        {
+        if (!Auth::instance()->logged_in()) {
             HTTP::redirect("account");
         }
-        if(Auth::instance()->logged_in("admin"))
-        {
+        if (Auth::instance()->logged_in("admin")) {
             HTTP::redirect("admin");
         }
     }
 
     public function action_index()
     {
+        try {
+            $userID = 1;
+
+            $this->template->notes = ORM::factory('note', Auth::instance()->get_user()->root_note_id)
+                ->fulltree();
+
+
+            //$sampleNodeContent = ORM::factory('note', 1)->contents->find_all();
+            //$this->template->sample = $sampleNodeContent[0];
+
+            //$this->_save(ORM::factory('note'));
+        }
+        catch (ORM_Validation_Exception $e)
+        {
+            $this->template->errors =  $e->errors('');
+        }
+    }
+
+
+    public function action_add()
+    {
+        $this->_save(ORM::factory('note'));
+    }
+
+    public function action_edit()
+    {
+        //$item = ORM::factory('note', 7)
+    }
+
+    public function action_delete()
+    {
 
     }
+
+    private function _save($item)
+    {
+        $this->template->notes = ORM::factory('note', Auth::instance()->get_user()->root_note_id)
+            ->fulltree();
+
+        $post = $this->request->post();
+        if(true) // isSet, empty
+        {
+            $parent = ORM::factory('note', 4); //$post['parent_id']);
+            try {
+                $item->name = 'test1'; //$post['name'];
+                $item->status_id = 3; // magic number, not started
+                $item->parent_id = 4; //$post['parent_id'];
+                $item->insert_as_last_child($parent);
+                $item->save();
+            }
+            catch(ORM_Validation_Exception $e)
+            {
+                $this->template->errors = $e->errors('models');
+            }
+        }
+    }
+
+
+
 }
