@@ -3,18 +3,37 @@
     <form class="formClass" method="post" action="">
         <fieldset>
             <label class="email_cont" for="email"><span>Email</span></label>
-            <input id="email" name="email" class="validate[custom[email]] text-input" placeholder="email" type="text" tabindex="1" accesskey="e">
+            <input id="email" name="email" class="validate[custom[email]] text-input" placeholder="email" type="text"
+                   tabindex="1" accesskey="e">
         </fieldset>
         <fieldset>
             <label for="username"><span>Username</span></label>
-            <input id="username" name="username" class="validate[required] text-input" placeholder="username" type="text" tabindex="2" accesskey="u">
+            <input id="username" name="username" class="validate[required] text-input" placeholder="username"
+                   type="text" tabindex="2" accesskey="u">
         </fieldset>
         <fieldset>
             <label class="pw_cont" for="password"><span>Password</span></label>
-            <input id="password" name="password" class="validate[required] text-input" placeholder="password" type="password" tabindex="3" accesskey="p">
+            <input id="password" name="password" class="validate[required] text-input" placeholder="password"
+                   type="password" tabindex="3" accesskey="p">
         </fieldset>
-        <fieldset class="login_submit"><button type="submit" class="btn">SIGN UP</button></fieldset>
+        <fieldset class="login_submit">
+            <button type="submit" class="btn">SIGN UP</button>
+        </fieldset>
         <fieldset class="login_social">
+        </fieldset>
+        <fieldset class="login_social">
+            <ul class="left">
+                <li><input type="checkbox" class="remember" name="remember" value="1" tabindex="3"></li>
+                <li class="info"><span>REMEMBER ME</span></li>
+            </ul>
+            <ul class="right">
+                <li class="info"><span>LOGIN</span></li>
+                <li><a class="login_l" href="account/"><span>Log in</span></a></li>
+            </ul>
+            <ul class="right">
+                <li class="info"><span>RECOVER PASSWORD</span></li>
+                <li><a class="login_f" href="account/forgottenpassword"><span>Forgotten password</span></a></li>
+            </ul>
         </fieldset>
     </form>
 </div>

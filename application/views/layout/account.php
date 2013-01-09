@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <base href="<?php echo URL::base()?>">
     <meta charset="utf-8">
     <title><?php echo $title ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -48,9 +52,9 @@
 
 <div class="login_main_cont">
     <div class="login_cont group login">
-            <?php if ($content): ?>
-                <?php include $content; ?>
-            <?php endif ?>
+        <?php if ($content): ?>
+            <?php include $content; ?>
+        <?php endif ?>
     </div>
 </div>
 
@@ -69,8 +73,6 @@
 
 </body>
 </html>
-
-
 
 
 <!--<!DOCTYPE html>-->
