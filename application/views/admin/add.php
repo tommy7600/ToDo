@@ -24,7 +24,7 @@
 
                 <div class="controls">
                     <input type="password" id="password" name="password"
-                           class="input-xlarge validate[required,minSize[6]] text-input" placeholder="password"">
+                           class="input-xlarge validate[required,minSize[6]] text-input" placeholder="password">
                 </div>
             </div>
 
