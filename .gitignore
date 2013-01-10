@@ -1,4 +1,4 @@
-/nbproject/
-/.idea/
-/application/cache/
-/application/logs/
+nbproject/
+.idea/
+application/cache/
+application/logs/
