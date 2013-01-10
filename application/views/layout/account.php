@@ -49,7 +49,6 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <h1 class="brand"><a href="index.html">LOGIN</a></h1>
         </div>
     </div>
 </div>
