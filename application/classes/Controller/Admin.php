@@ -52,7 +52,7 @@ class Controller_Admin extends Controller_Layout
             ->find()
             ->delete();
 
-        HTTP::redirect('admin');
+        HTTP::redirect('admin/userslist');
     }
 
     private function _save($item)
