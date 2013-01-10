@@ -17,7 +17,7 @@
 
                 <div class="controls">
                     <input type="password" id="password" name="password"
-                           class="validate[required,minSize[6]] input-xlarge" placeholder="password">
+                           class="validate[minSize[6]] input-xlarge" placeholder="password">
                 </div>
             </div>
 
@@ -28,4 +28,5 @@
         </fieldset>
     </form>
 </div>
+
 

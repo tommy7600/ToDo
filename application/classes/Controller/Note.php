@@ -4,7 +4,7 @@ class Controller_Note extends Controller_Layout
 {
 
     protected $title = "ToDo - Note";
-    public $template = "layout/index-admin";
+    public $template = "layout/index";
 
     public function before()
     {

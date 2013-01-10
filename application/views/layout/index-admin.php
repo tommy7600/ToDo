@@ -39,9 +39,6 @@
     <link rel="stylesheet" href="assets/css/theme_light/jquery-ui-1.8.20.custom.css">
     <link rel="stylesheet" href="assets/css/theme_light/filevalidation/validationEngine.jquery.css">
 
-    <link rel="stylesheet" href="assets/css/theme_light/forms/jquery.plupload.queue.css" media="screen" />
-    <link rel="stylesheet" href="assets/css/theme_light/forms/jquery.cleditor.css">
-
     <!-- Common - CSS -->
     <link rel="stylesheet" href="assets/css/theme_light/common.css">
     <link rel="stylesheet" href="assets/css/theme_light.css" class="style_set">
@@ -133,15 +130,6 @@
 <script src="assets/js/plugins/tables/colResizable-1.3.min.js"></script>
 <script src="assets/js/plugins/tables/jquery.tablesorter.min.js"></script>
 <script src="assets/js/specific/tables_advanced.js"></script>
-
-
-<script src="assets/js/plugins/forms/plupload.js"></script>
-<script src="assets/js/plugins/forms/plupload.html4.js"></script>
-<script src="assets/js/plugins/forms/plupload.html5.js"></script>
-<script src="assets/js/plugins/forms/jquery.plupload.queue.js"></script>
-<!--<script src="assets/js/plugins/forms/uploader/jquery.ui.plupload.js"></script>-->
-<script src="assets/js/plugins/forms/jquery.cleditor.min.js"></script>
-<script src="assets/js/specific/forms_uploader.js"></script>
 
 </body>
 </html>
