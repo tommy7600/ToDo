@@ -16,7 +16,7 @@
         </fieldset>
         <fieldset class="login_social">
             <ul class="left">
-                <li><input type="checkbox" class="remember" name="remember" value="1" tabindex="3"></li>
+                <li><input type="checkbox" class="remember" name="remember" value="1"></li>
                 <li class="info"><span>REMEMBER ME</span></li>
             </ul>
             <ul class="right">

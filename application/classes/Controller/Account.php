@@ -34,9 +34,10 @@ class Controller_Account extends Controller_Layout
     public function action_index()
 	{
         $post = $this->request->post();
+        $remember_me = isset($post['remember']) ? TRUE : FALSE;
         if(isset($post["username"], $post["password"]))
         {
-            if (Auth::instance()->login($post['username'], $post['password']))
+            if (Auth::instance()->login($post['username'], $post['password'], $remember_me))
             {
                 if(Auth::instance()->get_user()->isActive)
                 {
