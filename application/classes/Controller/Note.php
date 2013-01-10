@@ -20,21 +20,17 @@ class Controller_Note extends Controller_Layout
 
     public function action_index()
     {
-        try {
-            $userID = 1;
-
-            $this->template->notes = ORM::factory('note', Auth::instance()->get_user()->root_note_id)
-                ->fulltree();
-
-
-            //$sampleNodeContent = ORM::factory('note', 1)->contents->find_all();
-            //$this->template->sample = $sampleNodeContent[0];
-
-            //$this->_save(ORM::factory('note'));
-        }
-        catch (ORM_Validation_Exception $e)
+        try
         {
-            $this->template->errors =  $e->errors('');
+            $rootId = Auth::instance()->get_user()->root_note_id;
+            $noteId = $this->request->param("id");
+            $this->template->noteId = isset($noteId) ? $noteId : $rootId;
+            $this->template->notes = ORM::factory('note', $rootId)
+            ->fulltree(Auth::instance()->get_user()->scope);
+        }
+        catch (Exception $e)
+        {
+            $this->template->errors =  $e->getMessage();
         }
     }
 
@@ -42,6 +38,7 @@ class Controller_Note extends Controller_Layout
     public function action_add()
     {
         $this->_save(ORM::factory('note'));
+        HTTP::redirect("note");
     }
 
     public function action_edit()

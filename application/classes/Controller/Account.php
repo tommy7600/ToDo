@@ -188,6 +188,13 @@ class Controller_Account extends Controller_Layout
             if($user->loaded())
             {
                 $user->isActive = 1;
+
+                $note = ORM::factory("note");
+                $note->name = "Hello";
+                $note->save();
+
+                $user->root_note_id = $note->id;
+                $user->scope = $note->scope;
                 $user->save();
                 return TRUE;
             }

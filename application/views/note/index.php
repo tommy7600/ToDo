@@ -32,11 +32,11 @@
                     endif;
 
                     if($item->lvl > $currentLevel):
-                        echo '<ul><li><a href="#" class="TreeLink">'.$item->name.'</a>';
+                        echo '<ul><li><a href="#" class="TreeLink'.(($item->id==$noteId)?" NoteSelected":"").'">'.$item->name.'</a>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                         $currentLevel++;
                     else:
-                        echo '<li><a href="#" class="TreeLink">'.$item->name.'</a>';
+                        echo '<li><a href="#" class="TreeLink'.(($item->id==$noteId) ?' NoteSelected':'').'" onclick="">'.$item->name.'</a>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                     endif;
 
@@ -89,7 +89,7 @@
             $('#hiddenParentId').attr('value', $parentId);
             return false;
         });
-
+        $('a.NoteSelected').parents('ul').css('display', 'block');
     });
 
 </script>
