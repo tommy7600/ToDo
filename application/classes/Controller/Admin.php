@@ -86,4 +86,29 @@ class Controller_Admin extends Controller_Layout
         Auth::instance()->logout();
         HTTP::redirect();
     }
+
+    public function action_profile()
+    {
+        $item = ORM::factory("user", (int)Auth::instance()->get_user()->id);
+
+        // TODO Change it!!!!!!
+        $post = $this->request->post();
+
+        if (isset($post["email"])) {
+            try {
+                $item->email = $post["email"];
+
+                if (isset($post["password"]) && !empty($post["password"])) {
+                    $item->password = $post["password"];
+                }
+                $item->save();
+
+                HTTP::redirect("admin");
+            } catch (ORM_Validation_Exception $e) {
+                var_dump($e->errors());
+            }
+        }
+
+        $this->template->user = $item;
+    }
 }
