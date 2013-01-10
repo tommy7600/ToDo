@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: kbadura
- * Date: 1/10/13
- * Time: 10:22 AM
- * To change this template use File | Settings | File Templates.
- */
+
 class Controller_User_Admin extends Controller_User
 {
     public $navbar = "layout/navbar-admin";

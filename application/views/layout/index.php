@@ -53,7 +53,36 @@
 
 <div class="container">
     <div class="main_content row-fluid">
+        <div class="span3">
 
+            <div class="side_nav sidebar-nav" data-spy="affix" data-offset-top="150">
+                <h3 class="main_menu group">
+                    <span class="title">Main Menu</span>
+                    <a id="nav_list_btn" class="btn-collapse btn btn-inverse">
+                        <span class="sweet-gray sweet-go-back-from-screen">&nbsp;</span>
+                    </a>
+                </h3>
+                <ul class="nav nav-list">
+                    <li class="active"><a class="home" href="">Dashboard</a></li>
+                    <li><a class="users" href="note/">Users notes</a></li>
+                </ul>
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9">
+            <div class="row-fluid">
+                <div class="span12">
+                    <?php if ($content): ?>
+                        <?php include $content; ?>
+                    <?php endif ?>
+                </div>
+            </div>
+            <!--/row-->
+
+
+        </div>
+        <!--/span-->
         </div>
         <!--/span-->
     </div>
