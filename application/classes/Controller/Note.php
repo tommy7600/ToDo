@@ -51,6 +51,13 @@ class Controller_Note extends Controller_Layout
 
     }
 
+    public function action_view()
+    {
+        $noteId = $this->request->param("id");
+        $this->template->note = ORM::factory("note",$noteId);
+        $this->template->noteContent = ORM::factory("note_content",$noteId);
+    }
+
     private function _save($item)
     {
         $this->template->notes = ORM::factory('note', Auth::instance()->get_user()->root_note_id)

@@ -32,11 +32,11 @@
                     endif;
 
                     if($item->lvl > $currentLevel):
-                        echo '<ul><li><a href="#" class="TreeLink'.(($item->id==$noteId)?" NoteSelected":"").'">'.$item->name.'</a>';
+                        echo '<ul><li><a href="#" class="TreeLink'.(($item->id==$noteId)?" NoteSelected":"").'" onclick="loaddynamiccontent('.$item->id.');"">'.$item->name.'</a>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                         $currentLevel++;
                     else:
-                        echo '<li><a href="#" class="TreeLink'.(($item->id==$noteId) ?' NoteSelected':'').'" onclick="">'.$item->name.'</a>';
+                        echo '<li><a href="#" class="TreeLink'.(($item->id==$noteId) ?' NoteSelected':'').'" onclick="loaddynamiccontent('.$item->id.');">'.$item->name.'</a>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                     endif;
 
@@ -45,29 +45,29 @@
          </li></ul>
     </div>
 
-    <div class="span8">
-        <form method="post" action="/note/add">
-
-            <label for="txtname">Note Name:</label>
-            <input id="txtName" type="text" name="name" required="required">
-
-            <label for="comboStatus">Status:</label>
-            <select id="comboStatus" name="status">
-                <option value="1">Not Started</option>
-            </select>
-
-            <label for="txtContent">Content:</label>
-            <input id="txtContent" type="text" name="content">
-
-            <label for="dataPlannedEnd">Planned end:</label>
-            <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required">
-
-            <input id="hiddenParentId" type="hidden" value="-1" name="parentId">
-
-            <br>
-            <button type="submit">Add Note</button>
-
-        </form>
+    <div class="span8" id="content">
+<!--        <form method="post" action="/note/add">-->
+<!---->
+<!--            <label for="txtname">Note Name:</label>-->
+<!--            <input id="txtName" type="text" name="name" required="required">-->
+<!---->
+<!--            <label for="comboStatus">Status:</label>-->
+<!--            <select id="comboStatus" name="status">-->
+<!--                <option value="1">Not Started</option>-->
+<!--            </select>-->
+<!---->
+<!--            <label for="txtContent">Content:</label>-->
+<!--            <input id="txtContent" type="text" name="content">-->
+<!---->
+<!--            <label for="dataPlannedEnd">Planned end:</label>-->
+<!--            <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required">-->
+<!---->
+<!--            <input id="hiddenParentId" type="hidden" value="-1" name="parentId">-->
+<!---->
+<!--            <br>-->
+<!--            <button type="submit">Add Note</button>-->
+<!---->
+<!--        </form>-->
     </div>
 </div>
 
@@ -91,6 +91,11 @@
         });
         $('a.NoteSelected').parents('ul').css('display', 'block');
     });
+
+    function loaddynamiccontent(id)
+    {
+        $("#content").load("note/view/"+id.toString());
+    }
 
 </script>
 
