@@ -21,11 +21,11 @@
                 <td><?php echo $user->username; ?></td>
                 <td><?php echo $user->logins; ?></td>
                 <td><?php echo $user->last_login; ?></td>
-                <td><?php echo HTML::anchor('/admin/edit/' . $user->id, 'Edit')?> | <?php echo HTML::anchor('/admin/delete/' . $user->id, 'Delete')?></td>
+                <td><?php echo HTML::anchor('/user_admin/edit/' . $user->id, 'Edit')?> | <?php echo HTML::anchor('/user_admin/delete/' . $user->id, 'Delete')?></td>
             </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
     </section>
-    <a href="/admin/add" class="btn">Add user</a>
+    <a href="/user_admin/add" class="btn">Add user</a>
 </div>

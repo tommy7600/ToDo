@@ -68,8 +68,8 @@
                     </a>
                 </h3>
                 <ul class="nav nav-list">
-                    <li class="active"><a class="home" href="admin/">Dashboard</a></li>
-                    <li><a class="users" href="admin/userslist">Users list</a></li>
+                    <li class="active"><a class="home" href="user_admin/">Dashboard</a></li>
+                    <li><a class="users" href="user_admin/userslist">Users list</a></li>
                 </ul>
             </div>
             <!--/.well -->

@@ -5,17 +5,8 @@
  */
 class Controller_Account extends Controller_Layout
 {
-    /**
-     * @param Request $request
-     * @param Response $response
-     */
-    public function __construct(Request $request, Response $response)
-    {
-        $this->template="layout/account";
-        $this->title = "ToDo";
-
-        parent::__construct($request,$response);
-    }
+    public  $template="layout/account";
+    protected  $title = "ToDo";
 
     public function before()
     {
@@ -25,7 +16,7 @@ class Controller_Account extends Controller_Layout
         {
             if(Auth::instance()->logged_in("admin"))
             {
-                HTTP::redirect("admin");
+                HTTP::redirect("user_admin");
             }
             HTTP::redirect("note");
         }
@@ -58,7 +49,7 @@ class Controller_Account extends Controller_Layout
     public function action_registration()
     {
         $user = $this->_registerUser(ORM::factory("user"));
-        if($user)
+        if($user->loaded())
         {
             try
             {
@@ -86,8 +77,6 @@ class Controller_Account extends Controller_Layout
                 $this->template->messages["error"] = array("Registration" => "Can't sent email. Contact Admin");
             }
         }
-        else
-            $this->template->messages["error"] = array("Registration" => "Can't register account. Contact Admin");
     }
 
     public function action_confirm()
@@ -99,11 +88,11 @@ class Controller_Account extends Controller_Layout
             if($this->_activateUser(ORM::factory("user", $token->user_id)))
             {
                 $token->delete();
-                $this->template->messages["success"] = array("Activate User" => "Password has been reset");
+                $this->template->messages["success"] = array("Activate User" => "User account is Active");
             }
             else
             {
-                $this->template->messages["error"] = array("Activate User" => "Can't change password");
+                $this->template->messages["error"] = array("Activate User" => "Can't activate user account");
             }
         }
         else
@@ -194,9 +183,20 @@ class Controller_Account extends Controller_Layout
 
     private function _activateUser($user)
     {
-        $user->isActive = 1;
-        $user->save();
-        return TRUE;
+        try
+        {
+            if($user->loaded())
+            {
+                $user->isActive = 1;
+                $user->save();
+                return TRUE;
+            }
+            return FALSE;
+        }
+        catch (ORM_Validation_Exception $e)
+        {
+            $this->template->errors =  $e->errors('');
+        }
     }
 
     /**
@@ -245,6 +245,6 @@ class Controller_Account extends Controller_Layout
                 $this->template->errors =  $e->errors('');
             }
         }
-        return FALSE;
+        return $user;
     }
 }
