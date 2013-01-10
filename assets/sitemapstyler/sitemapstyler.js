@@ -28,7 +28,7 @@ this.sitemapstyler = function(){
 		for(var i=0;i<items.length;i++){
 			listItem(items[i]);
 		};
-		
+        $('a.NoteSelected').parents('ul').css('display', 'block');
 	};	
 };
 
