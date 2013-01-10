@@ -27,6 +27,7 @@ class Model_Note extends Kohana_ORM_MPTT
       )
     );
 
+
     public function rules()
     {
         return array(
@@ -42,5 +43,6 @@ class Model_Note extends Kohana_ORM_MPTT
             ),
         );
     }
+
 
 }

@@ -25,7 +25,7 @@ class Controller_Admin extends Controller_Layout
     {
         //var_dump(Auth::instance()->get_user()->id);
         //exit;
-        $keyword = $this->request->query("keyword");
+        $keyword = htmlspecialchars(trim($this->request->query("keyword")));
 
         if (isset($keyword) && !empty($keyword))
             $this->template->users = ORM::factory("user")->or_where('username', "LIKE", "%" . $keyword . "%")->or_where("email", "LIKE", "%" . $keyword . "%")->find_all();
@@ -52,7 +52,7 @@ class Controller_Admin extends Controller_Layout
             ->find()
             ->delete();
 
-        HTTP::redirect('admin');
+        HTTP::redirect('admin/userslist');
     }
 
     private function _save($item)
@@ -85,5 +85,30 @@ class Controller_Admin extends Controller_Layout
     {
         Auth::instance()->logout();
         HTTP::redirect();
+    }
+
+    public function action_profile()
+    {
+        $item = ORM::factory("user", (int)Auth::instance()->get_user()->id);
+
+        // TODO Change it!!!!!!
+        $post = $this->request->post();
+
+        if (isset($post["email"])) {
+            try {
+                $item->email = $post["email"];
+
+                if (isset($post["password"]) && !empty($post["password"])) {
+                    $item->password = $post["password"];
+                }
+                $item->save();
+
+                HTTP::redirect("admin");
+            } catch (ORM_Validation_Exception $e) {
+                var_dump($e->errors());
+            }
+        }
+
+        $this->template->user = $item;
     }
 }

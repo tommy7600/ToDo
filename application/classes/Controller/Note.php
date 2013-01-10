@@ -60,20 +60,26 @@ class Controller_Note extends Controller_Layout
             ->fulltree();
 
         $post = $this->request->post();
-        if(true) // isSet, empty
+        if(isSet($post['name'], $post['content'], $post['status'], $post['plannedEnd'], $post['parentId'])
+            && !empty($post['name'])
+            && !empty($post['content'])
+            && !empty($post['status'])
+            && !empty($post['plannedEnd'])
+            && !empty($post['parentId']))
         {
-            $parent = ORM::factory('note', 4); //$post['parent_id']);
+            $parent = ORM::factory('note', $post['parentId']); //$post['parent_id']);
             try {
-                $item->name = 'test1'; //$post['name'];
-                $item->status_id = 3; // magic number, not started
-                $item->parent_id = 4; //$post['parent_id'];
+                $item->name = $post['name'];
+                $item->status_id = 1; // magic number, not started
                 $item->insert_as_last_child($parent);
-                $item->save();
+                //HTTP::redirect('/node');
             }
+
             catch(ORM_Validation_Exception $e)
             {
                 $this->template->errors = $e->errors('models');
             }
+            
         }
     }
 
