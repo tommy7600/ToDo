@@ -35,5 +35,5 @@
 <script>
     /* ---- Wysiwyg Editor --------------*/
     $("#cleeditor").cleditor({width:"100%", height:"100%"})[0].focus();
-
+    $( "#dataPlannedEnd" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
 </script>

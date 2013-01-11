@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../assets/css/theme_light/forms/jquery.cleditor.css">
 
 <div class="span8" id="content">
-    <form method="post" action="/note/edit">
+    <form method="post" action="note_content/edit">
 
         <label for="txtname">Note Name:</label>
         <input id="txtName" type="text" name="name" required="required" value="<?php echo $note->name?>">
@@ -33,5 +33,5 @@
 <script>
     /* ---- Wysiwyg Editor --------------*/
     $("#cleeditor").cleditor({width:"100%", height:"100%"})[0].focus();
-
+    $( "#dataPlannedEnd" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
 </script>
