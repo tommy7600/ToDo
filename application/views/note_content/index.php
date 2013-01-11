@@ -1,6 +1,10 @@
 <!-- Site specific - CSS -->
 <link rel="stylesheet" href="../assets/css/theme_light/forms/jquery.cleditor.css">
 
+<?php if(isset($messages["error"])):?>
+    <?php echo HTML::alerts($messages)?>
+<?php else:?>
+
 <div class="span8" id="content">
     <form method="post" action="note_content/edit">
 
@@ -37,3 +41,4 @@
     $("#cleeditor").cleditor({width:"100%", height:"100%"})[0].focus();
     $( "#dataPlannedEnd" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
 </script>
+<?php endif?>

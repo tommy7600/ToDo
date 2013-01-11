@@ -42,35 +42,12 @@
                         echo '<i class="icon-plus-sign" onclick="loadDynamicAddContent('.$item->id.');"></i>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                     endif;
-
                 }
             ?>
          </li></ul>
     </div>
 
     <div class="span8" id="content">
-<!--        <form method="post" action="/note/add">-->
-<!---->
-<!--            <label for="txtname">Note Name:</label>-->
-<!--            <input id="txtName" type="text" name="name" required="required">-->
-<!---->
-<!--            <label for="comboStatus">Status:</label>-->
-<!--            <select id="comboStatus" name="status">-->
-<!--                <option value="1">Not Started</option>-->
-<!--            </select>-->
-<!---->
-<!--            <label for="txtContent">Content:</label>-->
-<!--            <input id="txtContent" type="text" name="content">-->
-<!---->
-<!--            <label for="dataPlannedEnd">Planned end:</label>-->
-<!--            <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required">-->
-<!---->
-<!--            <input id="hiddenParentId" type="hidden" value="-1" name="parentId">-->
-<!---->
-<!--            <br>-->
-<!--            <button type="submit">Add Note</button>-->
-<!---->
-<!--        </form>-->
     </div>
 </div>
 

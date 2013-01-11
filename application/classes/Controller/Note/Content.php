@@ -27,15 +27,37 @@ class Controller_Note_Content extends Controller_Note
     public function action_index()
     {
         $noteId = $this->request->param("id");
-        $this->template->note = ORM::factory("note",$noteId);
-        $this->template->noteContent = ORM::factory("note_content",$this->template->note->note_content_id);
-        $this->template->noteStatuses = ORM::factory("note_status")->find_all();
+
+        if (isset($noteId))
+        {
+            $userNote = ORM::factory("user_note")->where("note_id", "=", $noteId)->find();
+            if (Auth::instance()->get_user()->id == $userNote->user_id)
+            {
+                $this->template->note = ORM::factory("note", $noteId);
+                $this->template->noteContent = ORM::factory("note_content", $this->template->note->note_content_id);
+                $this->template->noteStatuses = ORM::factory("note_status")->find_all();
+            } else
+            {
+                $this->template->messages["error"] = array("Note" => "You can't edit this note");
+            }
+        }
     }
 
     public function action_edit()
     {
         $post = $this->request->post();
-        $this->_saveEdit(ORM::factory("note",(int) $post["id"]));
+        if (isset($post["id"]))
+        {
+            $userNote = ORM::factory("user_note")->where("note_id", "=", $post["id"])->find();
+            if (Auth::instance()->get_user()->id == $userNote->user_id)
+            {
+                $this->_saveEdit(ORM::factory("note", (int)$post["id"]));
+            }
+            else
+            {
+                $this->template->messages["error"] = array("Note"=>"You can't edit this note");
+            }
+        }
         $this->template->noteStatuses = ORM::factory("note_status")->find_all();
     }
 

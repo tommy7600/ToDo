@@ -193,6 +193,11 @@ class Controller_Account extends Controller_Layout
                 $note->name = "Hello";
                 $note->save();
 
+                $userNote = ORM::factory("user_note");
+                $userNote->user_id=$user->id;
+                $userNote->note_id=$note->id;
+                $userNote->save();
+
                 $user->root_note_id = $note->id;
                 $user->scope = $note->scope;
                 $user->save();

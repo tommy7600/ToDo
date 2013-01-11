@@ -22,11 +22,14 @@ class Controller_Note extends Controller_Layout
     {
         try
         {
-            $rootId = Auth::instance()->get_user()->root_note_id;
+            $user = Auth::instance()->get_user();
+            $rootId = $user->root_note_id;
             $noteId = $this->request->param("id");
-            $this->template->noteId = isset($noteId) ? $noteId : $rootId;
+            $noteId = isset($noteId) ? $noteId : $rootId;
+
+            $this->template->noteId = $noteId;
             $this->template->notes = ORM::factory('note', $rootId)
-            ->fulltree(Auth::instance()->get_user()->scope);
+                ->fulltree($user->scope);
         }
         catch (Exception $e)
         {
@@ -58,6 +61,12 @@ class Controller_Note extends Controller_Layout
                 $item->note_content_id = $content->id;
 
                 $item->insert_as_last_child($parent);
+
+                $userNote = ORM::factory("user_note");
+                $userNote->user_id=Auth::instance()->get_user()->id;
+                $userNote->note_id=$item->id;
+                $userNote->save();
+
                 HTTP::redirect('note/index/'.$item->id);
             }
 
