@@ -2,26 +2,29 @@
 <link rel="stylesheet" href="../assets/css/theme_light/forms/jquery.cleditor.css">
 
 <div class="span8" id="content">
-    <form method="post" action="/note/edit">
+    <form method="post" action="note_content/add">
 
         <label for="txtname">Note Name:</label>
-        <input id="txtName" type="text" name="name" required="required" value="<?php echo $note->name?>">
+        <input id="txtName" type="text" name="name" required="required">
 
         <label for="comboStatus">Status:</label>
         <select id="comboStatus" name="status">
-            <option value="1">Not Started</option>
+            <?php foreach($noteStatuses as $status):?>
+                <option value="<?php echo $status->id?>"><?php echo $status->name?></option>
+            <?php endforeach;?>
         </select>
 
         <label for="cleeditor">Content:</label>
-        <textarea id="cleeditor" name="content"><?php echo $noteContent->content?></textarea>
+        <textarea id="cleeditor" name="content"></textarea>
 
         <label for="dataPlannedEnd">Planned end:</label>
-        <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required" value="<?php echo $noteContent->date_planned_ended?>">
+        <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required">
 
-        <input id="hiddenParentId" type="hidden" value="-1" name="parentId">
+        <input id="hiddenParentId" type="hidden" value="<?php echo $noteParentId ?>" name="parentId">
 
         <br>
         <button type="submit">Add Note</button>
+        <button type="submit">Cancel</button>
 
     </form>
 </div>

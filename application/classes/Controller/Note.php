@@ -34,35 +34,8 @@ class Controller_Note extends Controller_Layout
         }
     }
 
-
-    public function action_add()
+    protected function _save($item)
     {
-        $this->_save(ORM::factory('note'));
-        HTTP::redirect("note");
-    }
-
-    public function action_edit()
-    {
-        //$item = ORM::factory('note', 7)
-    }
-
-    public function action_delete()
-    {
-
-    }
-
-    public function action_view()
-    {
-        $noteId = $this->request->param("id");
-        $this->template->note = ORM::factory("note",$noteId);
-        $this->template->noteContent = ORM::factory("note_content",$noteId);
-    }
-
-    private function _save($item)
-    {
-        $this->template->notes = ORM::factory('note', Auth::instance()->get_user()->root_note_id)
-            ->fulltree();
-
         $post = $this->request->post();
         if(isSet($post['name'], $post['content'], $post['status'], $post['plannedEnd'], $post['parentId'])
             && !empty($post['name'])
@@ -71,22 +44,28 @@ class Controller_Note extends Controller_Layout
             && !empty($post['plannedEnd'])
             && !empty($post['parentId']))
         {
-            $parent = ORM::factory('note', $post['parentId']); //$post['parent_id']);
-            try {
+            $parent = ORM::factory('note', $post['parentId']);
+            $content = ORM::factory("note_content");
+            try
+            {
+                $content->content = $post['content'];
+                $content->date_planned_ended = $post['plannedEnd'];
+                $content->date_created = date("y-m-d");
+                $content->save();
+
                 $item->name = $post['name'];
-                $item->status_id = 1; // magic number, not started
+                $item->status_id = $post['status'];
+                $item->note_content_id = $content->id;
+
                 $item->insert_as_last_child($parent);
-                //HTTP::redirect('/node');
+                HTTP::redirect('note/index/'.$item->id);
             }
 
             catch(ORM_Validation_Exception $e)
             {
                 $this->template->errors = $e->errors('models');
             }
-            
+
         }
     }
-
-
-
 }

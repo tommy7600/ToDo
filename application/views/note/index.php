@@ -10,6 +10,7 @@
     <div class="span4">
         <ul id="sitemap" style="background: #ffffff;">
             <li><a href="#" class="TreeLink"><?php echo $notes[0]->name; ?></a>
+                <i class="icon-plus-sign" onclick="loadDynamicAddContent(<?php echo $notes[0]->id ?>);"></i>
                 <input type="hidden" value="<?php echo $notes[0]->id; ?>">
                 <ul>
             <?php
@@ -32,11 +33,13 @@
                     endif;
 
                     if($item->lvl > $currentLevel):
-                        echo '<ul><li><a href="#" class="TreeLink'.(($item->id==$noteId)?" NoteSelected":"").'" onclick="loaddynamiccontent('.$item->id.');"">'.$item->name.'</a>';
+                        echo '<ul><li><a href="#" class="TreeLink'.(($item->id==$noteId)?" NoteSelected":"").'" onclick="loadDynamicEditContent('.$item->id.');"">'.$item->name.'</a>';
+                        echo '<i class="icon-plus-sign" onclick="loadDynamicAddContent('.$item->id.');"></i>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                         $currentLevel++;
                     else:
-                        echo '<li><a href="#" class="TreeLink'.(($item->id==$noteId) ?' NoteSelected':'').'" onclick="loaddynamiccontent('.$item->id.');">'.$item->name.'</a>';
+                        echo '<li><a href="#" class="TreeLink'.(($item->id==$noteId) ?' NoteSelected':'').'" onclick="loadDynamicEditContent('.$item->id.');">'.$item->name.'</a>';
+                        echo '<i class="icon-plus-sign" onclick="loadDynamicAddContent('.$item->id.');"></i>';
                         echo '<input type="hidden" value="'.$item->id.'">';
                     endif;
 
@@ -92,9 +95,14 @@
         $('a.NoteSelected').parents('ul').css('display', 'block');
     });
 
-    function loaddynamiccontent(id)
+    function loadDynamicEditContent(id)
     {
-        $("#content").load("note/view/"+id.toString());
+        $("#content").load("note_content/index/"+id.toString());
+    }
+
+    function loadDynamicAddContent(id)
+    {
+        $("#content").load("note_content/add/"+id.toString());
     }
 
 </script>

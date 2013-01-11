@@ -6,7 +6,7 @@
  * Time: 10:44 AM
  * To change this template use File | Settings | File Templates.
  */
-class Model_NoteStatus extends ORM
+class Model_Note_Status extends ORM
 {
     protected $_table_name = 'note_statuses';
     protected $_primary_key = 'id';
