@@ -4,6 +4,8 @@
 <div class="span8" id="content">
     <form method="post" action="note_content/edit">
 
+        <input id="id" type="hidden" name="id" value="<?php echo $note->id?>">
+
         <label for="txtname">Note Name:</label>
         <input id="txtName" type="text" name="name" required="required" value="<?php echo $note->name?>">
 

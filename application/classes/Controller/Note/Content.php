@@ -34,8 +34,8 @@ class Controller_Note_Content extends Controller_Note
 
     public function action_edit()
     {
-        $noteId = $this->request->param("id");
-        $this->_saveEdit(ORM::factory("note",$noteId));
+        $post = $this->request->post();
+        $this->_saveEdit(ORM::factory("note",(int) $post["id"]));
         $this->template->noteStatuses = ORM::factory("note_status")->find_all();
     }
 
@@ -73,6 +73,7 @@ class Controller_Note_Content extends Controller_Note
                 $item->name = $post['name'];
                 $item->status_id = $post['status']; // magic number, not started
                 $item->save();
+                HTTP::redirect('note/index/'.$item->id);
             }
 
             catch(ORM_Validation_Exception $e)
