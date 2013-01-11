@@ -122,7 +122,6 @@
 
 <script src="assets/js/script.js"></script>
 <script src="assets/js/specific/sparks.js"></script>
-<script src="assets/js/specific/index.js"></script>
 
 </body>
 </html>
