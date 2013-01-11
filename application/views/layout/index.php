@@ -42,6 +42,8 @@
     <link rel="stylesheet" href="assets/css/theme_light/common.css">
     <link rel="stylesheet" href="assets/css/theme_light.css" class="style_set">
 
+    <link rel="stylesheet" href="assets/css/theme_light/filevalidation/validationEngine.jquery.css">
+
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -106,14 +108,7 @@
 
 <!-- Site specific -->
 <script src="assets/js/libs/prettify.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.resize.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.pie.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.stack.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.symbol.min.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="assets/js/plugins/charts/excanvas.min.js"></script>
-<![endif]-->
+
 <script src="assets/js/plugins/tables/jquery.dataTables.min.js"></script>
 <script src="assets/js/plugins/calendar/fullcalendar.min.js"></script>
 <script src="assets/js/plugins/formselements/chosen.jquery.min.js"></script>
@@ -122,6 +117,9 @@
 
 <script src="assets/js/script.js"></script>
 <script src="assets/js/specific/sparks.js"></script>
+<script src="assets/js/specific/login.js"></script>
+<script src="assets/js/plugins/filevalidation/languages/jquery.validationEngine-en.js"></script>
+<script src="assets/js/plugins/filevalidation/jquery.validationEngine.js"></script>
 
 </body>
 </html>

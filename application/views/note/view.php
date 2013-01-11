@@ -1,3 +1,6 @@
+<!-- Site specific - CSS -->
+<link rel="stylesheet" href="../assets/css/theme_light/forms/jquery.cleditor.css">
+
 <div class="span8" id="content">
     <form method="post" action="/note/edit">
 
@@ -9,8 +12,8 @@
             <option value="1">Not Started</option>
         </select>
 
-        <label for="txtContent">Content:</label>
-        <input id="txtContent" type="text" name="content" value="<?php echo $noteContent->content?>">
+        <label for="cleeditor">Content:</label>
+        <textarea id="cleeditor" name="content"><?php echo $noteContent->content?></textarea>
 
         <label for="dataPlannedEnd">Planned end:</label>
         <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required" value="<?php echo $noteContent->date_planned_ended?>">
@@ -22,3 +25,12 @@
 
     </form>
 </div>
+
+
+<!-- Site specific - JS -->
+<script src="../assets/js/plugins/forms/jquery.cleditor.min.js"></script>
+<script>
+    /* ---- Wysiwyg Editor --------------*/
+    $("#cleeditor").cleditor({width:"100%", height:"100%"})[0].focus();
+
+</script>

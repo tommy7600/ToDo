@@ -108,14 +108,7 @@
 
 <!-- Site specific -->
 <script src="assets/js/libs/prettify.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.resize.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.pie.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.stack.min.js"></script>
-<script src="assets/js/plugins/charts/jquery.flot.symbol.min.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="assets/js/plugins/charts/excanvas.min.js"></script>
-<![endif]-->
+
 <script src="assets/js/plugins/tables/jquery.dataTables.min.js"></script>
 <script src="assets/js/plugins/calendar/fullcalendar.min.js"></script>
 <script src="assets/js/plugins/formselements/chosen.jquery.min.js"></script>
