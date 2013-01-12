@@ -1,11 +1,5 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: kdworak
- * Date: 1/7/13
- * Time: 1:40 PM
- * To change this template use File | Settings | File Templates.
- */
+<?php defined('SYSPATH') or die('No direct script access.');
+
 class Model_Note_Content extends ORM
 {
     protected $_table_name = 'note_contents';

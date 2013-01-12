@@ -1,9 +1,5 @@
-<?php
-/**
- * User: Kamil
- * Date: 11.01.13
- * Time: 16:12
- */
+<?php defined('SYSPATH') or die('No direct script access.');
+
 class Model_User_Note extends ORM
 {
     protected $_table_name = 'user_notes';
