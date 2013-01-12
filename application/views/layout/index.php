@@ -52,7 +52,9 @@
 <?php if ($navbar): ?>
     <?php include $navbar; ?>
 <?php endif ?>
-
+<div>
+    <?php echo HTML::alerts($messages)?>
+</div>
 <div class="container">
     <div class="main_content row-fluid">
         <div class="span3">
@@ -67,6 +69,7 @@
                 <ul class="nav nav-list">
                     <li class="active"><a class="home" href="">Dashboard</a></li>
                     <li><a class="users" href="note/">Users notes</a></li>
+                    <li><a class="users" href="note_find/">Search notes</a></li>
                 </ul>
             </div>
             <!--/.well -->
@@ -109,7 +112,6 @@
 <!-- Site specific -->
 <script src="assets/js/libs/prettify.js"></script>
 
-<script src="assets/js/plugins/tables/jquery.dataTables.min.js"></script>
 <script src="assets/js/plugins/calendar/fullcalendar.min.js"></script>
 <script src="assets/js/plugins/formselements/chosen.jquery.min.js"></script>
 <script src="assets/js/plugins/formselements/scrollability.min.js"></script>

@@ -3,7 +3,6 @@
         <h3>Users List</h3>
     </header>
     <section class="group">
-        <!--        <div class="dataTables_filter" id="dataTables_filter"><form class="form" action="" method="get"><label>Search: <input type="text" name="keyword"></form></label></div>-->
         <table id="example" class="display">
             <thead>
             <tr>
@@ -29,3 +28,10 @@
     </section>
     <a href="/user_admin/add" class="btn">Add user</a>
 </div>
+
+<!-- Site specific -->
+<script src="../assets/js/libs/jquery-1.7.2.min.js"></script>
+<script src="../assets/js/plugins/tables/jquery.dataTables.min.js"></script>
+<script src="../assets/js/plugins/tables/colResizable-1.3.min.js"></script>
+<script src="../assets/js/plugins/tables/jquery.tablesorter.min.js"></script>
+<script src="../assets/js/specific/tables_advanced.js"></script>

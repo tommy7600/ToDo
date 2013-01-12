@@ -51,7 +51,9 @@
 <?php if ($navbar): ?>
     <?php include $navbar; ?>
     <?php endif ?>
-
+<div>
+    <?php echo HTML::alerts($messages)?>
+</div>
 <div class="container">
     <div class="main_content row-fluid">
 
@@ -109,7 +111,6 @@
 <!-- Site specific -->
 <script src="assets/js/libs/prettify.js"></script>
 
-<script src="assets/js/plugins/tables/jquery.dataTables.min.js"></script>
 <script src="assets/js/plugins/calendar/fullcalendar.min.js"></script>
 <script src="assets/js/plugins/formselements/chosen.jquery.min.js"></script>
 <script src="assets/js/plugins/formselements/scrollability.min.js"></script>
@@ -117,12 +118,6 @@
 
 <script src="assets/js/script.js"></script>
 <script src="assets/js/specific/sparks.js"></script>
-<!--<script src="assets/js/specific/index.js"></script>-->
-
-<script src="assets/js/plugins/tables/jquery.dataTables.min.js"></script>
-<script src="assets/js/plugins/tables/colResizable-1.3.min.js"></script>
-<script src="assets/js/plugins/tables/jquery.tablesorter.min.js"></script>
-<script src="assets/js/specific/tables_advanced.js"></script>
 
 </body>
 </html>

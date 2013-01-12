@@ -1,8 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-/**
- *
- */
 class Controller_Account extends Controller_Layout
 {
     public  $template="layout/account";
@@ -190,7 +187,7 @@ class Controller_Account extends Controller_Layout
                 $user->isActive = 1;
 
                 $note = ORM::factory("note");
-                $note->name = "Hello";
+                $note->name = "Your notes";
                 $note->save();
 
                 $userNote = ORM::factory("user_note");

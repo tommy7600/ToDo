@@ -1,4 +1,4 @@
-<?php
+<?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_User_Admin extends Controller_User
 {
@@ -22,10 +22,12 @@ class Controller_User_Admin extends Controller_User
 
     public function action_userslist()
     {
-        //var_dump(Auth::instance()->get_user()->id);
-        //exit;
-        $keyword = htmlspecialchars(trim($this->request->query("keyword")));
+        $this->template->users = ORM::factory("user")->find_all();
+    }
 
+    public function action_find()
+    {
+        $keyword = htmlspecialchars(trim($this->request->query("keyword")));
         if (isset($keyword) && !empty($keyword))
             $this->template->users = ORM::factory("user")->or_where('username', "LIKE", "%" . $keyword . "%")->or_where("email", "LIKE", "%" . $keyword . "%")->find_all();
         else

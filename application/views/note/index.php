@@ -51,9 +51,9 @@
     </div>
 </div>
 
-<script src="assets/js/libs/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="../assets/sitemapstyler/sitemapstyler.js" xmlns="http://www.w3.org/1999/html"
-        xmlns="http://www.w3.org/1999/html"></script>
+<script src="../assets/js/libs/jquery-1.7.2.min.js"></script>
+<script src="../assets/sitemapstyler/sitemapstyler.js"></script>
+
 <script>
 
     $(document).ready(function(){

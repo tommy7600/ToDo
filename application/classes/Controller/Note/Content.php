@@ -1,11 +1,5 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: kbadura
- * Date: 1/11/13
- * Time: 9:29 AM
- * To change this template use File | Settings | File Templates.
- */
+<?php defined('SYSPATH') or die('No direct script access.');
+
 class Controller_Note_Content extends Controller_Note
 {
     public $navbar = "";
