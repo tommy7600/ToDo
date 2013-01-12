@@ -75,7 +75,7 @@ class Controller_User_Admin extends Controller_User
 
                 HTTP::redirect("user_admin/userslist");
             } catch (ORM_Validation_Exception $e) {
-                var_dump($e->errors());
+                $this->template->errors = $e->errors('models');
             }
         }
 

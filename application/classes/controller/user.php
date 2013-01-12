@@ -57,8 +57,7 @@ class Controller_User extends Controller_Layout
                     HTTP::redirect("note");
                 }
             } catch (ORM_Validation_Exception $e) {
-                //todo
-                var_dump($e->errors());
+                $this->template->errors = $e->errors('models');
             }
         }
 
