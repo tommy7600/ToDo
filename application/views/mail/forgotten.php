@@ -1,0 +1,1 @@
+Forgotten password: http://todo.localhost/account/confirm/<?php echo $token ?>

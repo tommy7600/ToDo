@@ -58,12 +58,15 @@ class Controller_Account extends Controller_Layout
                 $token->expires = time() + 100000;
                 $token->save();
 
+                $message_view = new View('mail/register');
+                $message_view->token = $token->token;
+
+
                 $message = Swift_Message::newInstance()
-                    ->setSubject('Forgotten Password - ToDo')
+                    ->setSubject('Registration - ToDo')
                     ->setFrom(array('kamilsmtptest@gmail.com' => 'ToDo'))
                     ->setTo(array($user->email => $user->username))
-                //todo: add dynamic content to mailBody
-                    ->setBody('Register User http://todo.localhost/account/confirm/' . $token->token, 'text/html');
+                    ->setBody($message_view->render(), 'text/html');
 
                 $mailer->send($message);
 
@@ -116,12 +119,14 @@ class Controller_Account extends Controller_Layout
                     $token->expires = time() + 100000;
                     $token->save();
 
+                    $message_view = new View('mail/forgotten');
+                    $message_view->token = $token->token;
+
                     $message = Swift_Message::newInstance()
                         ->setSubject('Forgotten Password - ToDo')
                         ->setFrom(array('kamilsmtptest@gmail.com' => 'ToDo'))
                         ->setTo(array($user->email => $user->username))
-                    //todo: add dynamic content to mailBody
-                        ->setBody('ResetPassword http://todo.localhost/account/resetpassword/' . $token->token, 'text/html');
+                        ->setBody($message_view->render(), 'text/html');
 
                     $mailer->send($message);
 

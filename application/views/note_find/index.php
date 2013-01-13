@@ -6,7 +6,7 @@
             </header>
 
             <form class="well-small form-search" method="get" action="">
-                <input type="text" name="keyword" class="input-medium search-query">
+                <input type="text" name="keyword" class="input-small search-query">
                 <button type="submit" class="btn">Search</button>
             </form>
 
