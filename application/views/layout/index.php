@@ -32,8 +32,6 @@
     <!-- Site specific - CSS -->
     <link rel="stylesheet" href="assets/css/theme_light/prettify.css">
     <link rel="stylesheet" href="assets/css/theme_light/tables/dataTables.css">
-    <link rel='stylesheet' href='assets/css/theme_light/calendar/fullcalendar.css'/>
-    <link rel='stylesheet' href='assets/css/theme_light/calendar/fullcalendar.print.css' media='print'/>
     <link rel="stylesheet" href="assets/css/theme_light/formselements/chosen.css">
     <link rel="stylesheet" href="assets/css/theme_light/formselements/dropkick.css">
     <link rel="stylesheet" href="assets/css/theme_light/jquery-ui-1.8.20.custom.css">
@@ -68,8 +66,9 @@
                 </h3>
                 <ul class="nav nav-list">
                     <li class="active"><a class="home" href="">Dashboard</a></li>
-                    <li><a class="users" href="note/">Users notes</a></li>
+                    <li><a class="users" href="note/">Notes manager</a></li>
                     <li><a class="users" href="note_find/">Search notes</a></li>
+                    <li><a class="users" href="note_calendar/">Calendar</a></li>
                 </ul>
             </div>
             <!--/.well -->
@@ -111,8 +110,6 @@
 
 <!-- Site specific -->
 <script src="assets/js/libs/prettify.js"></script>
-
-<script src="assets/js/plugins/calendar/fullcalendar.min.js"></script>
 <script src="assets/js/plugins/formselements/chosen.jquery.min.js"></script>
 <script src="assets/js/plugins/formselements/scrollability.min.js"></script>
 <script src="assets/js/plugins/formselements/jquery.dropkick-1.0.0.js"></script>

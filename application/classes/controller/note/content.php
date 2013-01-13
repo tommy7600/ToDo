@@ -65,17 +65,19 @@ class Controller_Note_Content extends Controller_Note
     protected function _saveEdit($item)
     {
         $post = $this->request->post();
-        if(isSet($post['name'], $post['content'], $post['status'], $post['plannedEnd'])
+        if(isSet($post['name'], $post['content'], $post['status'], $post['plannedEnd'],$post['dataStart'])
             && !empty($post['name'])
             && !empty($post['content'])
             && !empty($post['status'])
-            && !empty($post['plannedEnd']))
+            && !empty($post['plannedEnd'])
+            && !empty($post['dataStart']))
         {
             try
             {
                 $content = ORM::factory("note_content",$item->note_content_id);
                 $content->content = $post['content'];
                 $content->date_planned_ended = $post['plannedEnd'];
+                $content->date_start= $post['dataStart'];
                 if($post['status'] == 1)
                 {
                     $content->date_ended = date("y-m-d");
