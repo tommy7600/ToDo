@@ -15,21 +15,26 @@
 </div>
 
 <script src="../assets/js/libs/jquery-1.7.2.min.js"></script>
-
-<script src="../assets/js/common.js"></script>
-
-<!-- Site specific - JS -->
+<script src="../assets/js/libs/jquery.qtip-1.0.0-rc3.min.js"></script>
 <script src="../assets/js/plugins/calendar/fullcalendar.min.js"></script>
-<script src="../assets/js/script.js"></script>
+
+
 <script>
-$('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month'
-            },
-            editable: false,
-            droppable: false,
-            events: <?php echo $data ?>
-        });
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month'
+        },
+        editable: false,
+        droppable: false,
+        events: <?php echo $data ?>,
+//        eventRender: function (event, element) {
+//            element.qtip({
+//                content: event.description
+//            });
+//        }
+    });
+
+
 </script>

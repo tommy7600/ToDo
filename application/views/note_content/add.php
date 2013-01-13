@@ -22,7 +22,7 @@
         <textarea id="cleeditor" name="content"></textarea>
 
         <label for="dataStart">Planned start:</label>
-        <input id="dataStart" type="date" name="plannedEnd" required="required">
+        <input id="dataStart" type="date" name="dataStart" required="required">
 
         <label for="dataPlannedEnd">Planned end:</label>
         <input id="dataPlannedEnd" type="date" name="plannedEnd" required="required">

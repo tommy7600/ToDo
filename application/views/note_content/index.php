@@ -19,14 +19,17 @@
 
                 <label for="comboStatus">Status:</label>
                 <select id="comboStatus" name="status">
-                    <option value="1">Not Started</option>
+                    <?php foreach ($noteStatuses as $status): ?>
+                        <option
+                            value="<?php echo $status->id?>" <?php if ($note->status_id == $status->id) echo "selected"?>><?php echo $status->name?></option>
+                    <?php endforeach;?>
                 </select>
 
                 <label for="cleeditor">Content:</label>
                 <textarea id="cleeditor" name="content"><?php echo $noteContent->content?></textarea>
 
                 <label for="dataStart">Planned start:</label>
-                <input id="dataStart" type="date" name="plannedEnd" required="required"
+                <input id="dataStart" type="date" name="dataStart" required="required"
                        value="<?php echo $noteContent->date_start?>">
 
                 <label for="dataPlannedEnd">Planned end:</label>
